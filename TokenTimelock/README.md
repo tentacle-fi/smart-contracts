@@ -30,4 +30,6 @@ Once the contract has been deployed, any user can interact with its functions. T
 
 The functions available are 'deposit' and 'withdraw' which are self explanatory. There is no admin access to the contract and only the user who deposited can access their funds.
 
+The deposit function has a minimum value of 100, so that the math will work. 100 also corresponds to the number of decimal points that each ERC20 token contains (e.g. 100 = 0.000000000000000100 for an 18 decimal token)
+
 Tokens sent to the DAO or burn addresses are done so automatically upon deposit by the contract.
