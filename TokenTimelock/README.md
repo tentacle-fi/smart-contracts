@@ -33,3 +33,7 @@ The functions available are 'deposit' and 'withdraw' which are self explanatory.
 The deposit function has a minimum value of 100, so that the math will work. 100 also corresponds to the number of decimal points that each ERC20 token contains (e.g. 100 = 0.000000000000000100 for an 18 decimal token)
 
 Tokens sent to the DAO or burn addresses are done so automatically upon deposit by the contract.
+
+## License
+
+TokenTimelock is released under the MIT License.
