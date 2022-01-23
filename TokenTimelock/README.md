@@ -28,4 +28,6 @@ Deployment of TokenTimelock.sol requires the following constructor settings:
 
 Once the contract has been deployed, any user can interact with its functions. The only variable that can be set by a user is the deposit amount. All deposits are matched against the deposing address and are only available for withdrawal after the current blocktime passes the release time.
 
+The functions available are 'deposit' and 'withdraw' which are self explanatory. There is no admin access to the contract and only the user who deposited can access their funds.
+
 Tokens sent to the DAO or burn addresses are done so automatically upon deposit by the contract.
