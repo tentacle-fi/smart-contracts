@@ -13,7 +13,7 @@ Install via Remix. Copy file contents https://github.com/tentacle-fi/smart-contr
 Deployment of TokenTimelock.sol requires the following constructor settings:
 
 **token**: ERC20 basic token contract address for the token you wish to use
-      
+
 **locktime**: Number of seconds to be added to the current blocktime for token release time. e.g. if you fill this in with '600', it will take the current blocktime of the most recent block and add 600 seconds to it for the release time. Once this release time passes the user can withdraw any funds.
 
 **daoAddress**: To specify an address for the DAO contract the fee will be sent too. Funds sent to this address are based on a percentage determined by daoPercent.
