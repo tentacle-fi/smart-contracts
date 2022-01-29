@@ -44,23 +44,23 @@ contract Timelock {
         _burnPercent = burnPercent_;
     }
 
-    uint256 onePercent;
-    uint256 reduceAmount;
-    uint256 newAmount;
-    uint256 daoAmount;
-    uint256 burnAmount;
+    uint256 onePercent; // used to calculate 1% of the deposit amount for contract math
+    uint256 reduceAmount; // number used to reduce the funds held in the timelock contract
+    uint256 newAmount; // updated amount to modify the deposit amount via previous math
+    uint256 daoAmount; // amount to send to the daoAddress based on daoPercentage
+    uint256 burnAmount; // amount to send to the burnAddress based on burnPercentage
 
     function deposit(uint256 amount) public {
-        require(amount >= 100);
+        require(amount >= 100); // input amount needs to be minimum of 100 to however many decimal places 
         IERC20(_token).transferFrom(msg.sender, address(this), amount);
-        onePercent = amount / 100;
-        reduceAmount = _daoPercent + _burnPercent;
-        newAmount = 100 - reduceAmount;
+        onePercent = amount / 100; // dividing the deposit amount by 100 gives you a relative percentage point to perform further calculations
+        reduceAmount = _daoPercent + _burnPercent; // calculation for the total reduction of funds that stays in the timelock contract
+        newAmount = 100 - reduceAmount; // calculation for the percentage of funds that remains in the timelock contract 100% minus the reduceAmount
         amount = newAmount * onePercent;
         daoAmount = _daoPercent * onePercent;
         burnAmount = _burnPercent * onePercent;
-        balanceOf[msg.sender] += amount; // adjust the account's balance
         releaseTime[msg.sender] = block.timestamp + _lockTime; // set the release time based on the lockTime in constructor
+        balanceOf[msg.sender] += amount; // adjust the account's balance
         _token.safeTransfer(_daoAddress, daoAmount);
         _token.safeTransfer(_burnAddress, burnAmount);
     }
