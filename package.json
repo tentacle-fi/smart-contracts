@@ -1,19 +1,29 @@
 {
-  "name": "testing",
+  "name": "smart-contract-testing",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "(cd testing && npx truffle test ./test/test_1.js)",
-    "network": "npx ganache",
+    "test": "(TF_FOLDER=testing yarn _test)",
+    "test_coverage": "(TF_FOLDER=testing yarn _coverage)",
+    "test_compile": "(TF_FOLDER=testing yarn _compile)",
+    "voting": "(TF_FOLDER=Voting yarn _test)",
+    "voting_coverage": "(TF_FOLDER=Voting yarn _coverage)",
+    "voting_compile": "(TF_FOLDER=Voting yarn _compile)",
+    "_test": "cd $TF_FOLDER && npx truffle test ./test/test_1.js",
+    "_compile": "cd $TF_FOLDER && npx truffle compile && npx truffle-export-abi -o contracts/abi.json -v",
+    "_coverage": "cd $TF_FOLDER && npx truffle run coverage --file=\"**/test/*.js\"",
     "lint": "prettier --write \"**/*.+(js|json|sol)\" --print-width 150"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@openzeppelin/contracts": "^4.4.2",
+    "@openzeppelin/test-helpers": "^0.5.15",
     "prettier": "^2.5.1",
     "prettier-plugin-solidity": "^1.0.0-beta.19",
-    "truffle": "^5.4.30"
+    "solidity-coverage": "^0.7.19",
+    "truffle": "^5.4.30",
+    "truffle-export-abi": "^1.0.1"
   }
 }

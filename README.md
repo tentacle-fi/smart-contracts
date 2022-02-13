@@ -4,16 +4,27 @@
 
 ```
 # from root of git repo
-npm install
+yarn install
 
 # test the contract in testing/ (see package.json for full command details)
-npm run test
+yarn test
+
+# or to test the Voting contract(s)
+yarn voting
+
+# to generate a test coverage report, append _coverage to the testing command
+yarn voting_coverage
+
+# compile the contract (create ABI json), append _compile to the testing command
+yarn voting_compile
 
 # pretty up any code in js or solidity!
-npm run lint
+yarn lint
 ```
 
 ### Files of interest:
+
+NOTE: to ensure testing will work properly, a `test/` folder must be present with the file `test_1.js`
 
 `testing/test/test_1.js` this file is where to write the JS tests to execute against the contract
 `testing/contracts/TestContract.sol` the contract under test, deployed locally, for free
@@ -29,7 +40,7 @@ NOTE: as always, REAL NETWORK TESTING is the final, best solution that also cost
 ```
 # initially ganache was installed and seemingly used
 # tests run now without this dependency (somehow?!)
-npm install ganache --save
+yarn add ganache
 
 # to run ganache (a test rpc hosted locally):
 npx ganache
