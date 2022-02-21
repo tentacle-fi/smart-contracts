@@ -89,6 +89,10 @@ contract("VoteContract", function (accounts) {
         expect(contractDetails.options[i]).to.equal(deployedValues.options[i]);
       }
     });
+
+    it("should have event in constructor", async function() {
+      await expectEvent.inConstruction(Contract, "onNewBallot", {});
+    })
   });
 
   describe("test voting at valid block height & onVote() event emitted", function () {

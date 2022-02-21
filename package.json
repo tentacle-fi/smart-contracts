@@ -11,7 +11,7 @@
     "voting_coverage": "(TF_FOLDER=Voting yarn _coverage)",
     "voting_compile": "(TF_FOLDER=Voting yarn _compile)",
     "_test": "cd $TF_FOLDER && npx truffle test ./test/test_1.js",
-    "_compile": "cd $TF_FOLDER && npx truffle compile && npx truffle-export-abi -o contracts/abi.json -v",
+    "_compile": "cd $TF_FOLDER && npx truffle compile && npx truffle-export-abi -o abi/abi.json -v",
     "_coverage": "cd $TF_FOLDER && npx truffle run coverage --file=\"**/test/*.js\"",
     "lint": "prettier --write \"**/*.+(js|json|sol)\" --print-width 150"
   },

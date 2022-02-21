@@ -32,6 +32,12 @@
   },
   {
     "anonymous": false,
+    "inputs": [],
+    "name": "onNewBallot",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
     "inputs": [
       {
         "indexed": true,

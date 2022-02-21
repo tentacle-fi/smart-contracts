@@ -25,6 +25,8 @@ contract Voting {
     VoteDetails public voteDetails;
 
     event onVote(address indexed voter, uint256 indexed candidate);
+    event onNewBallot();
+
 
     constructor(
         uint256 startBlock_,
@@ -44,6 +46,8 @@ contract Voting {
         }
 
         voteDetails = VoteDetails({startBlock: startBlock_, endBlock: endBlock_, title: voteTitle_, desc: voteDesc_, options: voteOptionsText_});
+
+        emit onNewBallot();
     }
 
     function vote(uint256 candidate) public {
