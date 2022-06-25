@@ -1,0 +1,11 @@
+{
+  "extends": "solhint:recommended",
+  "plugins": [],
+  "rules": {
+    "compiler-version": ["error","^0.8.14"],
+    "ordering": "warn",
+    "private-vars-leading-underscore": ["warn",{"strict":false}],
+    "func-visibility": ["warn",{"ignoreConstructors":true}],
+    "reason-string": ["warn",{"maxLength":80}]
+  }
+}

@@ -27,7 +27,6 @@ contract Voting {
     event onVote(address indexed voter, uint256 indexed candidate);
     event onNewBallot();
 
-
     constructor(
         uint256 startBlock_,
         uint256 endBlock_,

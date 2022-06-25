@@ -18,6 +18,9 @@ yarn voting_coverage
 # compile the contract (create ABI json), append _compile to the testing command
 yarn voting_compile
 
+# package.json can be setup to run solhint to 'eslint' for problems in the solidity code
+yarn voting_eslint
+
 # pretty up any code in js or solidity!
 yarn lint
 ```

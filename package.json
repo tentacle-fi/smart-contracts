@@ -4,18 +4,26 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "lint": "prettier --write \"**/*.+(js|json|sol)\" --print-width 150",
     "test": "(TF_FOLDER=testing yarn _test)",
     "test_coverage": "(TF_FOLDER=testing yarn _coverage)",
     "test_compile": "(TF_FOLDER=testing yarn _compile)",
+    "painter": "(TF_FOLDER=Painter yarn _test)",
+    "painter_coverage": "(TF_FOLDER=Painter yarn _coverage)",
+    "painter_compile": "(TF_FOLDER=Painter yarn _compile)",
+    "painter_eslint": "(TF_FOLDER=Painter yarn _eslint)",
     "voting": "(TF_FOLDER=Voting yarn _test)",
     "voting_coverage": "(TF_FOLDER=Voting yarn _coverage)",
     "voting_compile": "(TF_FOLDER=Voting yarn _compile)",
+    "voting_eslint": "(TF_FOLDER=Voting yarn _eslint)",
     "_test": "cd $TF_FOLDER && npx truffle test ./test/test_1.js",
     "_compile": "cd $TF_FOLDER && npx truffle compile",
     "post_compile": "node tools.js $TF_FOLDER/build/contracts/$TF_FOLDER.json",
-    "_coverage": "cd $TF_FOLDER && npx truffle run coverage --file=\"**/test/*.js\"",
-    "post_coverage": "cp ./node_modules/nyc-dark/*.css $TF_FOLDER/coverage/",
-    "lint": "prettier --write \"**/*.+(js|json|sol)\" --print-width 150"
+    "_coverage": "yarn _coverage_report && yarn _coverage_dark && yarn _coverage_host",
+    "_coverage_report": "cd $TF_FOLDER && npx truffle run coverage --file=\"**/test/*.js\"",
+    "_coverage_dark": "cp ./node_modules/nyc-dark/*.css $TF_FOLDER/coverage/",
+    "_coverage_host": "npx ws --directory $TF_FOLDER/coverage/ --port 3000",
+    "_eslint": "cd $TF_FOLDER && npx solhint --fix **/*.sol"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +33,11 @@
     "nyc-dark": "^3.0.3",
     "prettier": "^2.5.1",
     "prettier-plugin-solidity": "^1.0.0-beta.19",
+    "solhint": "^3.3.7",
     "solidity-coverage": "^0.7.19",
     "truffle": "^5.4.30"
+  },
+  "devDependencies": {
+    "local-web-server": "^5.2.1"
   }
 }
